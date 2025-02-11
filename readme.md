@@ -25,7 +25,11 @@ npm install
 
 
 reorderKeys.ts	               ->        Ensures translation keys match en.json.
+
 translate.ts	               ->        Translates all missing texts (for initial setup).
-translateMissing.ts	           ->        Translates only new keys without modifying reviewed ones.
-exportCSV.ts                   ->        Exports all translations to CSV for easy review.
-importCSV.ts                   ->        Imports reviewed translations from CSV into JSON files.
+
+translateMissing.ts	         ->        Translates only new keys without modifying reviewed ones.
+
+exportCSV.ts                  ->        Exports all translations to CSV for easy review.
+
+importCSV.ts                  ->        Imports reviewed translations from CSV into JSON files.
