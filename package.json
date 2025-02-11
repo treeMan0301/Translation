@@ -1,0 +1,26 @@
+{
+  "name": "translation-automation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@types/node": "^22.13.1",
+    "axios": "^1.7.9",
+    "csv-parse": "^5.6.0",
+    "csv-writer": "^1.6.0",
+    "dotenv": "^16.4.7",
+    "fast-csv": "^5.0.2",
+    "fs-extra": "^11.3.0",
+    "openai": "^4.83.0",
+    "typescript": "^5.7.3"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4"
+  }
+}
