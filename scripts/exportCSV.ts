@@ -3,7 +3,8 @@ import { createObjectCsvWriter } from "csv-writer";
 
 const LANGUAGES = ["es", "fr", "pt", "sw"];
 const ENGLISH_FILE = "translations/en.json";
-const OUTPUT_CSV = "review/translations_review.csv";
+const ORIGIN_CSV = "review/translations_origin.csv";
+const CHANGE_CSV = "review/translations_update.csv";
 
 async function exportToCSV() {
   const enData = fs.readJsonSync(ENGLISH_FILE);
@@ -22,15 +23,20 @@ async function exportToCSV() {
     });
   }
 
-  const csvWriter = createObjectCsvWriter({
-    path: OUTPUT_CSV,
-    header: [{ id: "Key", title: "Key" }, { id: "English", title: "English" }, ...LANGUAGES.map(lang => ({ id: lang, title: lang.toUpperCase() })), { id: "Key", title: "Key" }],
+  const csvWriterOrigin = createObjectCsvWriter({
+    path: ORIGIN_CSV,
+    header: [{ id: "Key", title: "Key" }, { id: "English", title: "English" }],
+  });
+
+  const csvWriterChange = createObjectCsvWriter({
+    path: CHANGE_CSV,
+    header: [{ id: "Key", title: "Key" }, ...LANGUAGES.map(lang => ({ id: lang, title: lang.toUpperCase() })), { id: "English", title: "English" }, { id: "Key", title: "Key" }],
   });
 
   const records = Object.entries(translations).map(([key, values]) => ({ Key: key, ...values }));
-  await csvWriter.writeRecords(records);
-
-  console.log(`✅ Translations exported to ${OUTPUT_CSV}`);
+  await csvWriterChange.writeRecords(records);
+  await csvWriterOrigin.writeRecords(records);
+  console.log(`✅ Translations exported to ${CHANGE_CSV}`);
 }
 
 exportToCSV();
